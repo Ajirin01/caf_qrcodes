@@ -62,5 +62,5 @@ for ($i = 1; $i <= $number_of_codes_to_generate; $i++) {
     }
 }
 
-
+echo json_encode($message);
 ?>
