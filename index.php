@@ -26,6 +26,7 @@ $number_of_codes_to_generate = 5;
 // Create a PNG writer
 $writer = new PngWriter();
 
+$message = [];
 // Generate and save 10 QR codes
 for ($i = 1; $i <= $number_of_codes_to_generate; $i++) {
     // Generate a unique token (you can use any method you prefer)
@@ -47,7 +48,19 @@ for ($i = 1; $i <= $number_of_codes_to_generate; $i++) {
 
     // Save the image data to a file
     file_put_contents($filename, $image);
-    
-    echo "QR code for Token $token generated and saved as $filename<br>";
+
+    // Prepare and execute the INSERT statement
+    $stmt = $mysqli->prepare("INSERT INTO qrcodes (token, qrcode) VALUES (?, ?)");
+    $stmt->bind_param("ss", $token, $filename);
+
+    if ($stmt->execute()) {
+        // Insert successful
+        array_push($message, "QR code for Token $token generated and saved as $filename");
+    } else {
+        // Insert failed
+        array_push($message, $stmt->error);
+    }
 }
+
+
 ?>
