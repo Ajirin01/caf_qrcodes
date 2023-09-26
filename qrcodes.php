@@ -197,12 +197,11 @@
 <script src="plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 <!-- AdminLTE App -->
 <script src="dist/js/adminlte.min.js"></script>
-<!-- AdminLTE for demo purposes -->
-<script src="dist/js/demo.js"></script>
-<!-- Page specific script -->
+
 <script>
-  $(function () {
-    $("#example1").DataTable({
+  $(document).ready(function () {
+    // DataTable initialization
+    var table = $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
       "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
@@ -215,18 +214,6 @@
       "autoWidth": false,
       "responsive": true,
     });
-  });
-</script>
-
-<script>
-  $(document).ready(function () {
-    // DataTable initialization
-    var table = $("#example1").DataTable({
-      "responsive": true,
-      "lengthChange": false,
-      "autoWidth": false,
-      "buttons": ["copy", "csv", "excel", "pdf", "print", "colvis"]
-    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
 
     // Handle "Select All" checkbox
     $("#selectAllCheckbox").click(function () {
