@@ -21,7 +21,7 @@ function generateUniqueToken() {
     return $token;
 }
 
-$number_of_codes_to_generate = 5;
+$number_of_codes_to_generate = 100;
 
 // Create a PNG writer
 $writer = new PngWriter();
